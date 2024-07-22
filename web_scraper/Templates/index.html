@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input, select {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Scraper</h1>
+    <form action="/scrape" method="post">
+        <label for="query">Search Query:</label>
+        <input type="text" id="query" name="query" value="cats" required><br><br>
+        
+        <label for="delay">Delay (seconds):</label>
+        <input type="number" id="delay" name="delay" value="1" required><br><br>
+        
+        <label for="max_images">Max Images:</label>
+        <input type="number" id="max_images" name="max_images" value="6" required><br><br>
+        
+        <label for="local_path">Local File Path:</label>
+        <input type="text" id="local_path" name="local_path" value="static/imgs/"><br><br>
+
+        <label for="ftp_enabled">Enable FTP Upload:</label>
+        <input type="checkbox" id="ftp_enabled" name="ftp_enabled"><br><br>
+        
+        <div id="ftp_credentials" style="display: none;">
+            <label for="ftp_host">FTP Host:</label>
+            <input type="text" id="ftp_host" name="ftp_host"><br><br>
+            
+            <label for="ftp_user">FTP Username:</label>
+            <input type="text" id="ftp_user" name="ftp_user"><br><br>
+            
+            <label for="ftp_pass">FTP Password:</label>
+            <input type="password" id="ftp_pass" name="ftp_pass"><br><br>
+        </div>
+
+        <button type="submit">Start Scraping</button>
+    </form>
+
+    <script>
+        document.getElementById('ftp_enabled').addEventListener('change', function() {
+            document.getElementById('ftp_credentials').style.display = this.checked ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
